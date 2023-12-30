@@ -4,10 +4,10 @@ import os
 from dotenv import load_dotenv
 
 
-client_id = os.getenv("platform-client_id")
-client_secret = os.getenv("platform-client_secret")
-username = os.getenv("platform-username")
-password = os.getenv("platform-password")
+client_id = os.environ.get("PLATFORM-CLIENT-ID")
+client_secret = os.environ.get("PLATFORM-CLIENT-SECRET")
+username = os.environ.get("PLATFORM-USERNAME")
+password = os.environ.get("PLATFORM-PASSWORD")
 
 
 class TokenExpiredException(Exception):

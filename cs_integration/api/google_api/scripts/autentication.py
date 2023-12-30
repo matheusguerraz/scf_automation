@@ -7,9 +7,8 @@ dot_env_path = r'C:\Users\usuario\scf-automation\cs_integration\credential\keys\
 
 load_dotenv(dot_env_path)
 
-credential_path = os.getenv('credential_path')
-sheet_id = os.getenv('sheet_id')
-print(credential_path)
+credential_path = os.environ.get('CRED_JSON')
+sheet_id = os.getenv('SHEET_ID')
 
 def load_credentials(credential_path):
     try:
