@@ -1,4 +1,4 @@
-name: Execução Diária
+name: integration-sheets_circle
 
 on:
   schedule:
