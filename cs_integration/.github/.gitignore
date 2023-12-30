@@ -1,2 +1,2 @@
-cred.json
-.env
+/credential/keys/cred.json
+/credential/keys/.env
