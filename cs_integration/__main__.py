@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     logging.basicConfig(filename='execucao_diaria.log', level=logging.INFO)
     logging.info('Início da execução diária.')
-
+# Teste
     try:
         get_sheet.main()
         logging.info('Execução bem-sucedida.')
