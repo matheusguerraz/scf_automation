@@ -3,7 +3,7 @@ name: integration-sheets_circle
 on:
   push:
     branches:
-      - main  # Substitua "main" pelo nome da sua branch principal, se for diferente
+      - master  # Substitua "main" pelo nome da sua branch principal, se for diferente
 
   schedule:
     - cron: '0 5 * * *'  # Agendado para executar todos os dias às 2 da manhã
