@@ -25,6 +25,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt 
+    - name: Log Env Variable
+      run: cat CREDENTIAL
+      env: 
+        CREDENTIAL: ${{ secrets.CRED_JSON}}
+        
         
     - name: Execução do Script
       run: python -m cs_integration
@@ -34,6 +39,5 @@ jobs:
         PLATFORM-PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
         PLATFORM-USERNAME: ${{ secrets.PLATFORM_USERNAME }}
         SHEET_ID: ${{ secrets.SHEET_ID}}
-        CREDENTIAL: ${{ secrets.CRED_JSON}}
         
 
