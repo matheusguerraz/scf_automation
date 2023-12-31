@@ -9,12 +9,12 @@ sys.path.insert(0, project_root)
 
 from cs_integration.api.google_api.scripts import get_sheet
 
-print(f'PLATFORM_CLIENT_ID: {os.getenv("PLATFORM_CLIENT_ID")}')
-print(f'PLATFORM_CLIENT_SECRET: {os.getenv("PLATFORM_CLIENT_SECRET")}')
-print(f'PLATFORM_PASSWORD: {os.getenv("PLATFORM_PASSWORD")}')
-print(f'PLATFORM_USERNAME: {os.getenv("PLATFORM_USERNAME")}')
-print(f'SHEET_ID: {os.getenv("SHEET_ID")}')
-print(f'CREDENTIAL: {os.getenv("CREDENTIAL")}')
+print(f'PLATFORM_CLIENT_ID: {os.environ.get("PLATFORM_CLIENT_ID")}')
+print(f'PLATFORM_CLIENT_SECRET: {os.environ.get("PLATFORM_CLIENT_SECRET")}')
+print(f'PLATFORM_PASSWORD: {os.environ.get("PLATFORM_PASSWORD")}')
+print(f'PLATFORM_USERNAME: {os.environ.get("PLATFORM_USERNAME")}')
+print(f'SHEET_ID: {os.environ.get("SHEET_ID")}')
+print(f'CREDENTIAL: {os.environ.get("CREDENTIAL")}')
 
 if __name__ == "__main__":
 

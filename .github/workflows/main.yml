@@ -36,4 +36,3 @@ jobs:
         SHEET_ID: ${{ secrets.SHEET_ID}}
         CREDENTIAL: ${{ secrets.CRED_JSON}}
         
-
