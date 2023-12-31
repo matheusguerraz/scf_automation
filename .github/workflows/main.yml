@@ -41,7 +41,6 @@ jobs:
         PLATFORM-CLIENT-SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
         PLATFORM-PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
         PLATFORM-USERNAME: ${{ secrets.PLATFORM_USERNAME }}
-        CRED_JSON: ${{ secrets.CRED_JSON }}
         SHEET_ID: ${{ secrets.SHEET_ID}}
 
 
