@@ -22,10 +22,9 @@ jobs:
         python-version: '3.11.3'  # Especifique a versão do Python que você está usando
       
     - name: Set up Google Service Account Key
-      run: echo "${{ secrets.CRED_JSON }}" > service_account_key.json  
+      run: cat service_account_key.json > service_account_key.json
     - name: Print File Content
       run: cat service_account_key.json
-
 
     - name: Instalação das Dependências
       run: |
