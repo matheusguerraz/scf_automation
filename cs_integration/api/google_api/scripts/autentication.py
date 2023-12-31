@@ -3,12 +3,7 @@ from google.oauth2.service_account import Credentials
 import os
 import json
 
-json_filename = 'service_account_key.json'
-
-# Leia diretamente o arquivo JSON
-with open(json_filename) as json_file:
-    credentials_data = json.load(json_file)
-
+credentials_data = os.getenv('CREDENTIAL')
 sheet_id = os.getenv('SHEET_ID')
 
 def load_credentials(credentials_data):

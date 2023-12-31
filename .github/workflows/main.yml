@@ -20,13 +20,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.11.3'  # Especifique a versão do Python que você está usando
-    
-    - name: Set up Google Service Account Key
-      run: printf '%s' "${{ secrets.CRED_JSON }}" > service_account_key.json
-    - name: Print File Content
-      run: cat service_account_key.json
-      
-
 
     - name: Instalação das Dependências
       run: |
@@ -41,5 +34,6 @@ jobs:
         PLATFORM-PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
         PLATFORM-USERNAME: ${{ secrets.PLATFORM_USERNAME }}
         SHEET_ID: ${{ secrets.SHEET_ID}}
-
+        CREDENTIAL: ${{ secrets.CRED_JSON}}
+        
 
