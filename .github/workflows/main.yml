@@ -20,6 +20,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.11.3'  # Especifique a versão do Python que você está usando
+      
+    - name: Set up Google Service Account Key
+      run: echo "${{ secrets.CRED_JSON }}" > service_account_key.json
 
     - name: Instalação das Dependências
       run: |

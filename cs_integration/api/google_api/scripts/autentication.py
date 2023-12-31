@@ -1,13 +1,11 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import os
-from dotenv import load_dotenv
+import json
 
-dot_env_path = r'C:\Users\usuario\scf-automation\cs_integration\credential\keys\.env'
+with open('service_account_key.json') as json_file:
+    credential_path = json.load(json_file)
 
-load_dotenv(dot_env_path)
-
-credential_path = os.environ.get('CRED_JSON')
 sheet_id = os.getenv('SHEET_ID')
 
 def load_credentials(credential_path):
