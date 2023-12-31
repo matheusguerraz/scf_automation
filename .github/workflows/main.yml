@@ -24,7 +24,7 @@ jobs:
     - name: Print CRED_JSON content
       run: echo -E "${{ secrets.CRED_JSON }}"
     - name: Set up Google Service Account Key
-      run: echo -E "${{ secrets.CRED_JSON }}" > service_account_key.json
+      run: echo -n "${{ secrets.CRED_JSON }}" > service_account_key.json  
     - name: Print File Content
       run: cat service_account_key.json
 
