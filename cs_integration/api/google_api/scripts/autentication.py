@@ -4,9 +4,7 @@ import os
 import json
 #teste
 with open('service_account_key.json') as json_file:
-    json_content = json_file.read()
-
-credentials = json.JSONDecoder().decode(json_content)
+    credentials = json.load(json_file)
 
 sheet_id = os.getenv('SHEET_ID')
 
