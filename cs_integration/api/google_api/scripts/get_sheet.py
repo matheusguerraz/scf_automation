@@ -1,9 +1,9 @@
-from .autentication import load_credentials, authorize_client, sheet_id, credential_path
+from .autentication import load_credentials, authorize_client, sheet_id, credentials
 import json
 from cs_integration.api.circle_api.scripts.create_user import new_user
 
 # load credentials of Google Sheets API
-credential = load_credentials(credential_path)
+credential = load_credentials(credentials)
   
 # Function for open sheet 
 def get_sheet_by_id(client, sheet_id):
