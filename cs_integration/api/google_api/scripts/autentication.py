@@ -6,7 +6,7 @@ import json
 with open('service_account_key.json') as json_file:
     json_content = json_file.read()
 
-credentials = json.loads(json_content)
+credentials = json.JSONDecoder().decode(json_content)
 
 sheet_id = os.getenv('SHEET_ID')
 
