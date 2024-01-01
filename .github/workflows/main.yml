@@ -27,6 +27,12 @@ jobs:
       with:
         python-version: '3.11.3'  # Especifique a versão do Python que você está usando
 
+
+    - name: Instalação das Dependências
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt 
+      #teste
       env:
         PLATFORM-CLIENT-ID: ${{ env.PLATFORM-CLIENT-ID }}
         PLATFORM-CLIENT-SECRET: ${{ env.PLATFORM-CLIENT-SECRET }}
@@ -34,11 +40,6 @@ jobs:
         PLATFORM-USERNAME: ${{ env.PLATFORM-USERNAME }}
         SHEET_ID: ${{ env.SHEET_ID}}
         CREDENTIAL: ${{ env.CREDENTIAL}}
-    - name: Instalação das Dependências
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt 
-      #teste
     - name: Debug
       run: |
         echo "PLATFORM_CLIENT_ID: $env.PLATFORM-CLIENT-ID"
