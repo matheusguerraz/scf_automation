@@ -18,9 +18,7 @@ jobs:
 
     steps:
     - name: Checkout do Repositório
-      uses: actions/checkout@v2
-
-    - uses: actions/labeler@v4
+      uses: actions/labeler@v4
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -29,6 +27,13 @@ jobs:
       with:
         python-version: '3.11.3'  # Especifique a versão do Python que você está usando
 
+      env:
+        PLATFORM-CLIENT-ID: ${{ env.PLATFORM-CLIENT-ID }}
+        PLATFORM-CLIENT-SECRET: ${{ env.PLATFORM-CLIENT-SECRET }}
+        PLATFORM-PASSWORD: ${{ env.PLATFORM-PASSWORD }}
+        PLATFORM-USERNAME: ${{ env.PLATFORM-USERNAME }}
+        SHEET_ID: ${{ env.SHEET_ID}}
+        CREDENTIAL: ${{ env.CREDENTIAL}}
     - name: Instalação das Dependências
       run: |
         python -m pip install --upgrade pip
@@ -36,20 +41,14 @@ jobs:
       #teste
     - name: Debug
       run: |
-        echo "PLATFORM_CLIENT_ID: $PLATFORM_CLIENT_ID"
-        echo "PLATFORM_CLIENT_SECRET: $PLATFORM_CLIENT_SECRET"
-        echo "PLATFORM_PASSWORD: $PLATFORM_PASSWORD"
-        echo "PLATFORM_USERNAME: $PLATFORM_USERNAME"
-        echo "SHEET_ID: $SHEET_ID"
-        echo "CRED_JSON: $CRED_JSON"
-        
+        echo "PLATFORM_CLIENT_ID: $env.PLATFORM-CLIENT-ID"
+        echo "PLATFORM_CLIENT_SECRET: $env.PLATFORM-CLIENT-SECRET"
+        echo "PLATFORM_PASSWORD: $env.PLATFORM-PASSWORD"
+        echo "PLATFORM_USERNAME: $env.PLATFORM-USERNAME"
+        echo "SHEET_ID: $env.SHEET_ID"
+        echo "CRED_JSON: $env.CRED_JSON"
+
     - name: Execução do Script
       run: python -m cs_integration
-      env:
-        PLATFORM-CLIENT-ID: ${{ secrets.PLATFORM_CLIENT_ID }}
-        PLATFORM-CLIENT-SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
-        PLATFORM-PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
-        PLATFORM-USERNAME: ${{ secrets.PLATFORM_USERNAME }}
-        SHEET_ID: ${{ secrets.SHEET_ID}}
-        CREDENTIAL: ${{ secrets.CRED_JSON}}
+
         
