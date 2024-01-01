@@ -33,21 +33,22 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt 
       #teste
-      env:
-        PLATFORM-CLIENT-ID: ${{ env.PLATFORM-CLIENT-ID }}
-        PLATFORM-CLIENT-SECRET: ${{ env.PLATFORM-CLIENT-SECRET }}
-        PLATFORM-PASSWORD: ${{ env.PLATFORM-PASSWORD }}
-        PLATFORM-USERNAME: ${{ env.PLATFORM-USERNAME }}
-        SHEET_ID: ${{ env.SHEET_ID}}
-        CREDENTIAL: ${{ env.CREDENTIAL}}
+    - name: Set Environment Variables
+      run: |
+        echo "PLATFORM_CLIENT_ID=${{ secrets.PLATFORM_CLIENT_ID }}" >> $GITHUB_ENV
+        echo "PLATFORM_CLIENT_SECRET=${{ secrets.PLATFORM_CLIENT_SECRET }}" >> $GITHUB_ENV
+        echo "PLATFORM_PASSWORD=${{ secrets.PLATFORM_PASSWORD }}" >> $GITHUB_ENV
+        echo "PLATFORM_USERNAME=${{ secrets.PLATFORM_USERNAME }}" >> $GITHUB_ENV
+        echo "SHEET_ID=${{ secrets.SHEET_ID }}" >> $GITHUB_ENV
+        echo "CREDENTIAL=${{ secrets.CREDENTIAL }}" >> $GITHUB_ENV
     - name: Debug
       run: |
-        echo "PLATFORM_CLIENT_ID: $env.PLATFORM-CLIENT-ID"
-        echo "PLATFORM_CLIENT_SECRET: $env.PLATFORM-CLIENT-SECRET"
-        echo "PLATFORM_PASSWORD: $env.PLATFORM-PASSWORD"
-        echo "PLATFORM_USERNAME: $env.PLATFORM-USERNAME"
-        echo "SHEET_ID: $env.SHEET_ID"
-        echo "CRED_JSON: $env.CRED_JSON"
+        echo "PLATFORM_CLIENT_ID: $PLATFORM-CLIENT-ID"
+        echo "PLATFORM_CLIENT_SECRET: $PLATFORM-CLIENT-SECRET"
+        echo "PLATFORM_PASSWORD: $PLATFORM-PASSWORD"
+        echo "PLATFORM_USERNAME: $PLATFORM-USERNAME"
+        echo "SHEET_ID: $SHEET_ID"
+        echo "CRED_JSON: $CRED_JSON"
 
     - name: Execução do Script
       run: python -m cs_integration
