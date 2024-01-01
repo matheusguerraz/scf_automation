@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout do Repositório
-      uses: actions/labeler@v4
+      uses: actions/checkout@v2
 
     - name: Configuração do Python
       uses: actions/setup-python@v2
@@ -27,7 +27,7 @@ jobs:
 
     - name: Listar Conteúdo do Diretório
       run: ls -la
-      
+
     - name: Instalação das Dependências
       run: |
         python -m pip install --upgrade pip
