@@ -76,9 +76,11 @@ def process_people_sheet(sheet):
 
 
 def main():
-    credentials_data = json.loads(credentials_json)
-    credential = load_credentials(credentials_data)
+
     try:
+        credentials_data = json.loads(credentials_json)
+        credential = load_credentials(credentials_data)
+        
         if credential:
             print(f'credencial válida {credential}')
             # authorize client
