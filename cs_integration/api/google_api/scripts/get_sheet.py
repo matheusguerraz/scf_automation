@@ -2,7 +2,7 @@ from .autentication import load_credentials, authorize_client, sheet_id
 import json
 from cs_integration.api.circle_api.scripts.create_user import new_user
 import os
-from .json_auth import autentication_json, credentials_data
+from .json_auth import credentials_data
   
 # Function for open sheet 
 def get_sheet_by_id(client, sheet_id):
@@ -78,7 +78,6 @@ def process_people_sheet(sheet):
 def main():
 
     try:
-        autentication_json()
         credential = load_credentials(credentials_data)
         
         if credential:
