@@ -1,6 +1,6 @@
 from .autentication import load_credentials, authorize_client, sheet_id
 import json
-from cs_integration.api.circle_api.scripts.create_user import new_user, successful_registrations
+from cs_integration.api.circle_api.scripts.create_user import new_user
 import os
 from .json_auth import credentials_data
   
@@ -71,6 +71,7 @@ def process_people_sheet(sheet):
         final_json = json.dumps(people_list, ensure_ascii=False, indent=2)
         new_users = json.loads(final_json)
         new_user(new_users)
+
     else:
         print("Coluna 'Nome' não encontrada na aba 'Pessoas'. Verifique eventuais alterações na estrutura")
 
@@ -94,21 +95,3 @@ def main():
 
     except Exception as e:
         print(f'Erro no processo de autenticação: {e}')
-
-def register_registered(successful_registrations, sheet):
-        # Verifica se há e-mails para atualizar
-    if successful_registrations:
-        # Encontrar o índice das colunas relevantes
-        email_column_index = sheet.find("E-mail", in_row=1).col
-        status_column_index = sheet.find("Status", in_row=1).col
-
-        # Obtém os valores das colunas relevantes
-        values = sheet.get_all_values()
-
-        # Itera sobre as linhas
-        for row_index, row in enumerate(values[1:], start=2):
-            email = row[email_column_index - 1]
-
-            # Se o e-mail estiver na lista de registros bem-sucedidos, atualiza o status para 'C'
-            if email in successful_registrations:
-                sheet.update_cell(row_index, status_column_index, 'C')
