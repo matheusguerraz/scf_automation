@@ -18,11 +18,16 @@ jobs:
       PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
       PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
       SHEET_ID: ${{ secrets.SHEET_ID }}
-      CREDENTIAL: ${{ fromJson(secrets.CRED_JSON) }}
+      CREDENTIAL: ${{ secrets.CRED_JSON }}
 
     steps:
     - name: Checkout do Repositório
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+    
+    - name: Decode JSON
+      run: |
+        DECODED_CREDENTIAL=$(echo $CREDENTIAL | base64 -d)
+        echo "Decoded CREDENTIAL: $DECODED_CREDENTIAL"
 
     - name: Configuração do Python
       uses: actions/setup-python@v2
