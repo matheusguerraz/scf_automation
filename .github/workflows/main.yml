@@ -18,20 +18,16 @@ jobs:
       PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
       PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
       SHEET_ID: ${{ secrets.SHEET_ID }}
-      CREDENTIAL: ${{ secrets.CRED_JSON }}
+      PROJECT_ID: ${{ secrets.PROJECT_ID }}
+      PRIVATE_KEY_ID: ${{ secrets.PRIVATE_KEY_ID }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
+      CLIENT_ID: ${{ secrets.CLIENT_ID}}
+      CLIENT_X509_CERT_URL: ${{ secrets.CLIENT_X509_CERT_URL}}
 
     steps:
     - name: Checkout do Repositório
       uses: actions/checkout@v4
-    
-    - name: Decode JSON
-      run: |
-        # Remover caracteres nulos da variável JSON
-        CLEANED_CREDENTIAL=$(tr -d '\0' <<< "$CREDENTIAL")
-        
-        # Tentar decodificar a variável JSON limpa
-        DECODED_CREDENTIAL=$(echo "$CLEANED_CREDENTIAL" | base64 -di || true)
-        echo "Decoded CREDENTIAL: $DECODED_CREDENTIAL"
 
     - name: Configuração do Python
       uses: actions/setup-python@v2
