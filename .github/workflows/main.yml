@@ -25,6 +25,7 @@ jobs:
       CLIENT_ID: ${{ secrets.CLIENT_ID}}
       CLIENT_X509_CERT_URL: ${{ secrets.CLIENT_X509_CERT_URL}}
 
+
     steps:
     - name: Checkout do Repositório
       uses: actions/checkout@v4
