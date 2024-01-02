@@ -83,7 +83,7 @@ def main():
         if credential:
             print(f'credencial válida {credential}')
             # authorize client
-            client = authorize_client(credentials_data)
+            client = authorize_client(credential)
 
             if client:
                 print(f'cliente válido {client}')
@@ -98,4 +98,4 @@ def main():
                         process_status(window)
 
     except Exception as e:
-        print(f'Deu erro aqui {e}')
+        print(f'Deu erro aqui {e} \n {credentials_data}')

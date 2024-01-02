@@ -9,7 +9,7 @@ sheet_id = os.environ['SHEET_ID']
 def load_credentials(credentials_data):
     try:
         
-        creds = service_account.Credentials.from_service_account_info(
+        creds = service_account.Credentials.from_service_account_file(
             credentials_data,
             scopes=['https://www.googleapis.com/auth/spreadsheets']
         )
