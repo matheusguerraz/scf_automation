@@ -1,6 +1,5 @@
 import requests
 from .autentication import get_token
-from cs_integration.api.google_api.scripts.get_sheet import register_registered
 import logging
 
 token = get_token()
