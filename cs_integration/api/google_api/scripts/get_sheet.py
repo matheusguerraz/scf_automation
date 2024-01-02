@@ -8,6 +8,7 @@ from .json_auth import credentials_json
 def get_sheet_by_id(client, sheet_id):
     try:    
         sheet = client.open_by_key(sheet_id)
+        print('abrimos a planilha')
         return sheet
     except Exception as e:
         print(f'Ocorreu um erro ao abrir a planilha: {e}')
@@ -89,4 +90,5 @@ def main():
             if sheet:
                 # Iterar sobre cada aba da sheet
                 for window in sheet:
+                    print(f'entrou no loop com a janela {window}')
                     process_status(window)
