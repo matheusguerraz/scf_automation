@@ -11,14 +11,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-
+    environment: scf_automation
+    env:
+      PLATFORM_CLIENT_ID: ${{ secrets.PLATFORM_CLIENT_ID }}
+      PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
+      PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
+      PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
+      SHEET_ID: ${{ secrets.SHEET_ID}}
+      CREDENTIAL: ${{ secrets.CRED_JSON}}
 
     steps:
     - name: Checkout do Repositório
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+
 
     - name: Configuração do Python
       uses: actions/setup-python@v2
@@ -32,23 +37,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt 
-      #teste
-    - name: Set Environment Variables
-      run: |
-        echo "PLATFORM_CLIENT_ID=${{ secrets.PLATFORM_CLIENT_ID }}" >> $GITHUB_ENV
-        echo "PLATFORM_CLIENT_SECRET=${{ secrets.PLATFORM_CLIENT_SECRET }}" >> $GITHUB_ENV
-        echo "PLATFORM_PASSWORD=${{ secrets.PLATFORM_PASSWORD }}" >> $GITHUB_ENV
-        echo "PLATFORM_USERNAME=${{ secrets.PLATFORM_USERNAME }}" >> $GITHUB_ENV
-        echo "SHEET_ID=${{ secrets.SHEET_ID }}" >> $GITHUB_ENV
-        echo "CREDENTIAL=${{ secrets.CREDENTIAL }}" >> $GITHUB_ENV
-    - name: Debug
-      run: |
-        echo "PLATFORM_CLIENT_ID: $PLATFORM_CLIENT_ID"
-        echo "PLATFORM_CLIENT_SECRET: $PLATFORM_CLIENT_SECRET"
-        echo "PLATFORM_PASSWORD: $PLATFORM_PASSWORD"
-        echo "PLATFORM_USERNAME: $PLATFORM_USERNAME"
-        echo "SHEET_ID: $SHEET_ID"
-        echo "CRED_JSON: $CRED_JSON"
 
     - name: Execução do Script
       run: python -m cs_integration
