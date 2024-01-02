@@ -78,20 +78,23 @@ def process_people_sheet(sheet):
 def main():
     credentials_data = json.loads(credentials_json)
     credential = load_credentials(credentials_data)
+    try:
+        if credential:
+            print(f'credencial válida {credential}')
+            # authorize client
+            client = authorize_client(credentials_data)
 
-    if credential:
-        print(f'credencial válida {credential}')
-        # authorize client
-        client = authorize_client(credentials_data)
+            if client:
+                print(f'cliente válido {client}')
+                # Obter sheet por ID
+                sheet = get_sheet_by_id(client, sheet_id)
 
-        if client:
-            print(f'cliente válido {client}')
-            # Obter sheet por ID
-            sheet = get_sheet_by_id(client, sheet_id)
+                if sheet:
+                    print(f'planilha válida')
+                    # Iterar sobre cada aba da sheet
+                    for window in sheet:
+                        print(f'entrou no loop com a janela {window}')
+                        process_status(window)
 
-            if sheet:
-                print(f'planilha válida')
-                # Iterar sobre cada aba da sheet
-                for window in sheet:
-                    print(f'entrou no loop com a janela {window}')
-                    process_status(window)
+    except Exception as e:
+        print(f'Deu erro aqui {e}')
