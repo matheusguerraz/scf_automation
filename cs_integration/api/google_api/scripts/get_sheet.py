@@ -80,14 +80,17 @@ def main():
     credential = load_credentials(credentials_data)
 
     if credential:
+        print(f'credencial válida {credential}')
         # authorize client
         client = authorize_client(credentials_data)
 
         if client:
+            print(f'cliente válido {client}')
             # Obter sheet por ID
             sheet = get_sheet_by_id(client, sheet_id)
 
             if sheet:
+                print(f'planilha válida')
                 # Iterar sobre cada aba da sheet
                 for window in sheet:
                     print(f'entrou no loop com a janela {window}')
