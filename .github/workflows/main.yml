@@ -17,13 +17,13 @@ jobs:
       PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
       PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
       PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
-      SHEET_ID: ${{ secrets.SHEET_ID}}
-      CREDENTIAL: ${{ secrets.CRED_JSON}}
+      SHEET_ID: ${{ secrets.SHEET_ID }}
+      CREDENTIAL: ${{ secrets.CRED_JSON }}
 
     steps:
     - name: Checkout do Repositório
       uses: actions/checkout@v3
-      
+
     - name: Debug
       run: |
         echo "PLATFORM_CLIENT_ID: $PLATFORM_CLIENT_ID"

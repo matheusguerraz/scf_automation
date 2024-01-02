@@ -8,7 +8,7 @@ project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, project_root)
 
 from cs_integration.api.google_api.scripts import get_sheet
-
+#teste
 print(f'PLATFORM_CLIENT_ID: {os.environ["PLATFORM_CLIENT_ID"]}')
 print(f'PLATFORM_CLIENT_SECRET: {os.environ["PLATFORM_CLIENT_SECRET"]}')
 print(f'PLATFORM_PASSWORD: {os.environ["PLATFORM_PASSWORD"]}')
