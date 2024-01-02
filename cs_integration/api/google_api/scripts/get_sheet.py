@@ -70,10 +70,11 @@ def process_people_sheet(sheet):
         new_users = json.loads(final_json)
         if new_users is not None:
             successful_registrations = new_user(new_users)
+            print(successful_registrations)
             # Após cadastrar, altera o status dos e-mails na planilha
             if successful_registrations:
-                update_status_in_sheet(sheet, emails=successful_registrations)
-                
+                update_status_in_sheet(sheet, successful_registrations)
+
         else:
             print('Não temos usuários para cadastrar.')
 
@@ -82,11 +83,11 @@ def process_people_sheet(sheet):
 
 
 # Função para atualizar o status dos e-mails na planilha
-def update_status_in_sheet(sheet, emails):
+def update_status_in_sheet(sheet, successful_registrations):
     # Obter o índice da coluna de e-mails
     email_column_index = sheet.find("E-mail", in_row=1).col
 
-    for email in emails:
+    for email in successful_registrations:
         # Iterar sobre as linhas da planilha
         for row_index, row in enumerate(sheet.get_all_values()[1:], start=2):
             current_email = row[email_column_index - 1]
