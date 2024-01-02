@@ -69,7 +69,9 @@ def process_people_sheet(sheet):
         final_json = json.dumps(people_list, ensure_ascii=False, indent=2)
         new_users = json.loads(final_json)
         if new_user is not None:
-            new_user(new_users)
+            successful_registrations = new_user(new_users)
+            # Após cadastrar, altera o status dos e-mails na planilha
+            update_status_in_sheet(sheet, successful_registrations)
         else:
             print('Não temos usuários para cadastrar.')
 
@@ -77,8 +79,24 @@ def process_people_sheet(sheet):
         print("Coluna 'Nome' não encontrada na aba 'Pessoas'. Verifique eventuais alterações na estrutura")
 
 
-def main():
+# Função para atualizar o status dos e-mails na planilha
+def update_status_in_sheet(sheet, emails):
+    # Obter o índice da coluna de e-mails
+    email_column_index = sheet.find("E-mail", in_row=1).col
 
+    for email in emails:
+        # Iterar sobre as linhas da planilha
+        for row_index, row in enumerate(sheet.get_all_values()[1:], start=2):
+            current_email = row[email_column_index - 1]
+            # Verificar se o e-mail atual corresponde ao e-mail na lista
+            if current_email == email:
+                # Atualizar o status para 'C' (ou o valor desejado)
+                sheet.update_cell(row_index, email_column_index, 'C')
+                print(f'Status do e-mail {email} atualizado para "C"')
+                break  # Parar a busca após encontrar a correspondência
+
+
+def main(): 
     try:
         credential = load_credentials(credentials_data)
         
