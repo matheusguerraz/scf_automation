@@ -4,6 +4,7 @@ import logging
 
 token = get_token()
 successful_registrations = []
+error_registrations = []
 
 def new_user(new_users):
 
@@ -19,11 +20,17 @@ def new_user(new_users):
 
         if response.status_code == 200:
             successful_registrations.append(user['email'])
-
+            
         else:
             user_error = user['name']
-            logging.error(f'Tivemos um erro durante o cadastro do {user_error}')
+            error_registrations.append(user_error)
+            
+    if successful_registrations:
+        print(f'Tivemos os seguintes usuários cadastrados:\n{successful_registrations}')
+    else:
+        print('Não tivemos cadastros no dia de hoje.')
 
-
-    from cs_integration.api.google_api.scripts.get_sheet import register_registered  # Movido para o final
-    register_registered(successful_registrations)
+    if error_registrations:
+        print(f'Tivemos erro no cadastro dos seguintes usuários:\n{error_registrations}')       
+    else:
+        print('Não tivemos erros para cadastrar usuários')
