@@ -26,7 +26,11 @@ jobs:
     
     - name: Decode JSON
       run: |
-        DECODED_CREDENTIAL=$(echo $CREDENTIAL | base64 -di || true)
+        # Remover caracteres nulos da variável JSON
+        CLEANED_CREDENTIAL=$(tr -d '\0' <<< "$CREDENTIAL")
+        
+        # Tentar decodificar a variável JSON limpa
+        DECODED_CREDENTIAL=$(echo "$CLEANED_CREDENTIAL" | base64 -di || true)
         echo "Decoded CREDENTIAL: $DECODED_CREDENTIAL"
 
     - name: Configuração do Python
