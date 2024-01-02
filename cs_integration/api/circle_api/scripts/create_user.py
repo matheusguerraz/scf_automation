@@ -34,3 +34,5 @@ def new_user(new_users):
         print(f'Tivemos erro no cadastro dos seguintes usuários:\n{error_registrations}')       
     else:
         print('Não tivemos erros para cadastrar usuários')
+
+    return successful_registrations, error_registrations

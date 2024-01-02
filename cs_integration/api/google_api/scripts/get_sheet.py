@@ -68,10 +68,12 @@ def process_people_sheet(sheet):
         # Cria o JSON final
         final_json = json.dumps(people_list, ensure_ascii=False, indent=2)
         new_users = json.loads(final_json)
-        if new_user is not None:
+        if new_users is not None:
             successful_registrations = new_user(new_users)
             # Após cadastrar, altera o status dos e-mails na planilha
-            update_status_in_sheet(sheet, successful_registrations)
+            if successful_registrations:
+                update_status_in_sheet(sheet, emails=successful_registrations)
+                
         else:
             print('Não temos usuários para cadastrar.')
 
