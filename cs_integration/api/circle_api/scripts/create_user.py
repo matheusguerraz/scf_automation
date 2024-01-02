@@ -25,5 +25,5 @@ def new_user(new_users):
             logging.error(f'Tivemos um erro durante o cadastro do {user_error}')
 
 
-from cs_integration.api.google_api.scripts.get_sheet import register_registered  # Movido para o final
-register_registered(successful_registrations)
+    from cs_integration.api.google_api.scripts.get_sheet import register_registered  # Movido para o final
+    register_registered(successful_registrations)
