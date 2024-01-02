@@ -8,8 +8,6 @@ import json
 # Carregue as credenciais diretamente do JSON
 credentials_json = os.environ['CREDENTIAL']
 
-credentials_data = json.loads(credentials_json)
-
 sheet_id = os.environ['SHEET_ID']
 
 def load_credentials(credentials_json):
