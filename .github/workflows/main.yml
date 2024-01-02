@@ -18,9 +18,7 @@ jobs:
       PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
       PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
       SHEET_ID: ${{ secrets.SHEET_ID }}
-      CREDENTIAL: ${{ secrets.CRED_JSON }}
-      run: echo $CREDENTIAL | base64 -di > ./cs_integration/google-services.json
-
+      CREDENTIAL: ${{ fromJson(secrets.CRED_JSON) }}
 
     steps:
     - name: Checkout do Repositório
