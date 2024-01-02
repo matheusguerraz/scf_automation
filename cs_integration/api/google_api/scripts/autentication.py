@@ -8,7 +8,7 @@ credentials_json = os.environ['CREDENTIAL']
 
 credentials_data = json.loads(credentials_json)
 
-sheet_id = os.environ.get('SHEET_ID')
+sheet_id = os.environ['SHEET_ID']
 
 def load_credentials(credentials_data):
     try:
@@ -18,6 +18,7 @@ def load_credentials(credentials_data):
     except Exception as e:
         print(f'Ocorreu um erro ao carregar as credentials: {e}')
         return None
+
 
 def authorize_client(credentials_data):
     try:        

@@ -1,13 +1,11 @@
 import requests
 import time
 import os
-from dotenv import load_dotenv
 
-
-client_id = os.environ["PLATFORM_CLIENT_ID"]
-client_secret = os.environ["PLATFORM_CLIENT_SECRET"]
-username = os.environ["PLATFORM_USERNAME"]
-password = os.environ["PLATFORM_PASSWORD"]
+client_id = os.environ['PLATFORM_CLIENT_ID']
+client_secret = os.environ['PLATFORM_CLIENT_SECRET']
+username = os.environ['PLATFORM_USERNAME']
+password = os.environ['PLATFORM_PASSWORD']
 
 
 class TokenExpiredException(Exception):
