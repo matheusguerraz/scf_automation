@@ -1,7 +1,10 @@
 import requests
 from .autentication import get_token
+from cs_integration.api.google_api.scripts.get_sheet import register_registered
+import logging
 
 token = get_token()
+successful_registrations = []
 
 def new_user(new_users):
 
@@ -15,4 +18,12 @@ def new_user(new_users):
 
         response = requests.post(url, headers=headers, data=payload)
 
-        print(f'Realizamos o cadastro do cara')
+        if response.status_code == 200:
+            successful_registrations.append(user['email'])
+
+        else:
+            user_error = user['name']
+            logging.error(f'Tivemos um erro durante o cadastro do {user_error}')
+    
+    sheet = 'Pessoas'
+    register_registered(successful_registrations, sheet)
