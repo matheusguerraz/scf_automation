@@ -1,4 +1,4 @@
-from .autentication import load_credentials, authorize_client, sheet_id, credentials_data
+from .autentication import load_credentials, authorize_client, sheet_id
 import json
 from cs_integration.api.circle_api.scripts.create_user import new_user
 import os
