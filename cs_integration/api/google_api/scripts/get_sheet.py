@@ -74,9 +74,10 @@ def process_people_sheet(sheet):
 
 
 def main():
-    
-        # Carregue as credenciais diretamente do JSON
-    credentials_data = os.environ['CREDENTIAL']
+
+    # Carregue as credenciais diretamente do JSON
+    credentials_json = os.environ['CREDENTIAL']
+    credentials_data = json.loads(credentials_json)
 
     # load credentials of Google Sheets API
     credential = load_credentials(credentials_data)
