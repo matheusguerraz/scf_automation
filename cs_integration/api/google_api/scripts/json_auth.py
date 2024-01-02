@@ -7,7 +7,7 @@ CLIENT_EMAIL = os.environ['CLIENT_EMAIL']
 CLIENT_ID = os.environ['CLIENT_ID']
 CLIENT_X509_CERT_URL = os.environ['CLIENT_X509_CERT_URL']
 
-credentials_data = {
+credentials_json = {
       "type": "service_account",
   "project_id": PROJECT_ID,
   "private_key_id": PRIVATE_KEY_ID,
