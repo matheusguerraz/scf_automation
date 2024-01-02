@@ -1,18 +1,14 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from google.auth import exceptions
 from google.oauth2 import service_account
 import os
-import json
 
-# Carregue as credenciais diretamente do JSON
-credentials_json = os.environ['CREDENTIAL']
 
 sheet_id = os.environ['SHEET_ID']
 
-def load_credentials(credentials_json):
+def load_credentials(credentials_data):
     try:
-        credentials_data = json.loads(credentials_json)
+        
         creds = service_account.Credentials.from_service_account_info(
             credentials_data,
             scopes=['https://www.googleapis.com/auth/spreadsheets']

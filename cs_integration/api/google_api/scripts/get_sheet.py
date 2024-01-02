@@ -1,6 +1,11 @@
 from .autentication import load_credentials, authorize_client, sheet_id, credentials_data
 import json
 from cs_integration.api.circle_api.scripts.create_user import new_user
+import os
+
+# Carregue as credenciais diretamente do JSON
+credentials_json = os.environ['CREDENTIAL']
+credentials_data = json.loads(credentials_json)
 
 # load credentials of Google Sheets API
 credential = load_credentials(credentials_data)
