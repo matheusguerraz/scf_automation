@@ -2,9 +2,13 @@ import gspread
 from google.oauth2.service_account import Credentials
 import os
 import json
+import base64
 
 # Carregue as credenciais diretamente do JSON
-credentials_json = os.environ.get('CRED_JSON')
+json_encode = os.environ('CRED_JSON')
+
+credentials_json = base64.b64encode(f'{json_encode}'.encode('ascii'))
+
 credentials_data = json.loads(credentials_json)
 
 sheet_id = os.environ.get('SHEET_ID')
