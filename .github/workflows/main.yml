@@ -26,7 +26,7 @@ jobs:
     
     - name: Decode JSON
       run: |
-        DECODED_CREDENTIAL=$(echo $CREDENTIAL | base64 -d)
+        DECODED_CREDENTIAL=$(echo $CREDENTIAL | base64 -di || true)
         echo "Decoded CREDENTIAL: $DECODED_CREDENTIAL"
 
     - name: Configuração do Python
