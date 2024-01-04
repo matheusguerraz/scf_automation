@@ -7,7 +7,7 @@ import logging
 project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, project_root)
 
-from cs_integration.api.google_api.scripts import get_sheet
+from cs_integration.api.google_api.scripts.sheet import get_sheet
 
 
 if __name__ == "__main__":
